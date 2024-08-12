@@ -5,7 +5,7 @@
 ![image](https://github.com/user-attachments/assets/1e9a8fa0-4df6-4467-9962-39f94cba8f31)
 ![image](https://github.com/user-attachments/assets/b21095f5-75e3-416b-8f16-42ac9fb568c5)
 
-## 실습
+## 아래 내용은 실습한 내용입니다.
 
 _기울여_
 <br/>
