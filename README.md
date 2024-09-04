@@ -70,3 +70,17 @@ app.post('/youtuber', (req, res) => {
 3. json으로 성공 메세지 클라이언트에게 보여줌.
 ![image](https://github.com/user-attachments/assets/51d392c9-d4c0-4e3d-aca1-5714d94506c1)
 
+> **아이디 값 고도화**
+> 
+
+기존에 db에 post요청을 보내 저장시킬 때 일일히 숫자를 입력해서 해야했지만 한계가 있음
+
+id를 동적으로 추가할 때마다 바뀔 수 있게 고도화 진행.
+
+```jsx
+let id = 1 
+
+db.set(id++, req.body)
+```
+
+id 변수를 만들어 request가 올때마다 db아이디값을 동적으로 할당.
