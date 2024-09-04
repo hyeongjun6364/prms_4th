@@ -9,7 +9,7 @@ vsc에서 api를 설계하고 서버를 키고 postman에서 테스트를 할 �
 > 테스트결과
 > 
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d8350982-356e-4da2-871f-5e3210620a38/a4bebab4-4856-458d-a471-ed1ce8f00437/image.png)
+![image](https://github.com/user-attachments/assets/39063f1d-97e6-4cf6-8c81-a4ee6f3ace36)
 
 > **req, res 구현 & 테스트**
 > 
@@ -20,7 +20,8 @@ vsc에서 api를 설계하고 서버를 키고 postman에서 테스트를 할 �
 app.use(express.json())
 ```
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d8350982-356e-4da2-871f-5e3210620a38/e036ea7b-2c4f-4a47-baa5-803052a2a3e0/image.png)
+![image](https://github.com/user-attachments/assets/2979bb40-04d8-43de-af63-0cc3acfb392b)
+
 
 > 서버에서 받아올 때
 > 
