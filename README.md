@@ -68,5 +68,5 @@ app.post('/youtuber', (req, res) => {
 1. 우선 request값을 json으로 읽을 수 있어야 하기에 express.json미들웨어를 불러와 사용.
 2. 이후 post시 request 데이터를 받아와 콘솔에 제대로 나오는지 확인.
 3. json으로 성공 메세지 클라이언트에게 보여줌.
-4. ![image](https://github.com/user-attachments/assets/51d392c9-d4c0-4e3d-aca1-5714d94506c1)
+![image](https://github.com/user-attachments/assets/51d392c9-d4c0-4e3d-aca1-5714d94506c1)
 
