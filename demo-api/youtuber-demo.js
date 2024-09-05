@@ -37,11 +37,13 @@ app.get('/youtuber/:id', function (req, res) {
     })
   }
 })
-
+// REST API 설계
 app.get('/youtubers', (req, res) => {
-  res.json({
-    message: 'test',
+  let jsonObject = {}
+  db.forEach((value, key) => {
+    jsonObject[key] = value
   })
+  res.json(jsonObject)
 })
 
 app.use(express.json())
@@ -52,6 +54,53 @@ app.post('/youtuber', (req, res) => {
     message: `${req.body.channelTitle}님, 유튜버 생활을 응원합니다.`,
   })
   console.log(db)
+})
+// 개별 유튜버 삭제
+app.delete('/youtuber/:id', (req, res) => {
+  let { id } = req.params
+  id = parseInt(id)
+
+  let youtuber = db.get(id)
+  if (youtuber) {
+    const name = youtuber.channelTitle
+    res.json({
+      message: `${name}님 아쉽지만 다음에 또 뵙겠습니다.`,
+    })
+    db.delete(id)
+  } else {
+    res.json({
+      message: `${id}등록된 유튜버가 없습니다.`,
+    })
+  }
+})
+
+app.delete('/youtubers', (req, res) => {
+  let msg = ''
+  if (db.size >= 1) {
+    msg = '모든 유튜버가 삭제되었습니다.'
+    db.clear()
+  } else {
+    msg = '삭제 할 유튜버가 없습니다.'
+  }
+  res.json({
+    message: msg,
+  })
+})
+
+app.put('/youtubers/:id', (req, res) => {
+  let { id } = req.params
+  id = parseInt(id)
+  let youtuber = db.get(id)
+  if (youtuber) {
+    const newTitle = req.body.channelTitle
+    youtuber.channelTitle = newTitle
+    db.set(id, youtuber)
+    res.json(youtuber)
+  } else {
+    res.json({
+      message: `${id}등록된 유튜버가 없습니다.`,
+    })
+  }
 })
 db.set(id++, youtuber1)
 db.set(id++, youtuber2)
