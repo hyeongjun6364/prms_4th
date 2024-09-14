@@ -40,19 +40,33 @@ app.get('/youtuber/:id', function (req, res) {
 // REST API 설계
 app.get('/youtubers', (req, res) => {
   let jsonObject = {}
-  db.forEach((value, key) => {
-    jsonObject[key] = value
-  })
-  res.json(jsonObject)
+  if (db.size !== 0) {
+    db.forEach((value, key) => {
+      jsonObject[key] = value
+    })
+    res.json(jsonObject)
+  } else {
+    res.json({
+      message: '조회할 데이터가 없습니다.',
+    })
+  }
 })
 
 app.use(express.json())
 app.post('/youtuber', (req, res) => {
+  const channelTitle = req.body.channelTitle
   console.log(req.body)
-  db.set(id++, req.body)
-  res.json({
-    message: `${req.body.channelTitle}님, 유튜버 생활을 응원합니다.`,
-  })
+  if (channelTitle) {
+    db.set(id++, req.body)
+    res.json({
+      message: `${channelTitle}님, 유튜버 생활을 응원합니다.`,
+    })
+  } else {
+    res.status(400).json({
+      message: '요청 값을 제대로 보내주세요',
+    })
+  }
+
   console.log(db)
 })
 // 개별 유튜버 삭제
@@ -73,7 +87,7 @@ app.delete('/youtuber/:id', (req, res) => {
     })
   }
 })
-
+//전체삭제
 app.delete('/youtubers', (req, res) => {
   let msg = ''
   if (db.size >= 1) {
